@@ -3,13 +3,10 @@ function getComputerChoice() {
     switch(value) {
         case 0:
             return "rock";
-            break;
         case 1:
             return "paper";
-            break;
         case 2:
-            return "scissors";
-            break;    
+            return "scissors";   
     }
 }
 
@@ -30,7 +27,6 @@ function getHumanChoice() {
         }
     }
 }
-
 let humanScore = 0;
 let computerScore = 0;
 
@@ -46,27 +42,41 @@ function playRound(humanChoice, computerChoice) {
 
     } else if (humanChoice === "rock" && computerChoice === "scissors") {
         console.log("You win! Rock beats Scissors");
-        humanScore =+ 1;
+        humanScore += 1;
 
     } else if (humanChoice === "paper" && computerChoice === "scissors") {
         console.log("You lose! Scissors beats Paper");
-        computerScore =+ 1;
+        computerScore += 1;
 
     } else if (humanChoice === "paper" && computerChoice === "rock") {
         console.log("You win! Paper beats Rock");
-        humanScore =+ 1;
+        humanScore += 1;
 
     } else if (humanChoice === "scissors" && computerChoice === "paper") {
         console.log("You win! Scissors beats Paper");
-        humanScore =+ 1;
+        humanScore += 1;
 
     } else if (humanChoice === "scissors" && computerChoice === "rock") {
         console.log("You lose! Rock beats Scissors");
-        computerScore =+ 1;
+        computerScore += 1;
     } 
+    console.log(`Human Score: ${humanScore}, Computer Score: ${computerScore}`);
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+function playGame() {
 
-playRound(humanSelection, computerSelection);
+    while(humanScore !== 5 && computerScore !== 5) {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+    
+        playRound(humanSelection, computerSelection);
+    }
+
+    if (humanScore === 5) {
+         console.log("You Win!");
+    } else if (computerScore == 5) {
+         console.log("Computer Win!");
+}
+}
+
+playGame();
