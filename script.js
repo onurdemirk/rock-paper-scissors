@@ -27,45 +27,32 @@ function getHumanChoice() {
         }
     }
 }
+
+
 let humanScore = 0;
 let computerScore = 0;
 
 function playRound(humanChoice, computerChoice) {
-
     if (humanChoice === computerChoice) {
-        console.log("Scoreless!!!!");
+        console.log("It's a draw!");
+    } else if (
+        (humanChoice === "rock" && computerChoice === "scissors") ||
+        (humanChoice === "paper" && computerChoice === "rock") ||
+        (humanChoice === "scissors" && computerChoice === "paper")
+    ) {
+        console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+        humanScore++;
+    } else {
+        console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+        computerScore++;
     }
 
-    if (humanChoice === "rock" && computerChoice === "paper") {
-        console.log("You lose! Paper beats Rock");
-        computerScore += 1;
-
-    } else if (humanChoice === "rock" && computerChoice === "scissors") {
-        console.log("You win! Rock beats Scissors");
-        humanScore += 1;
-
-    } else if (humanChoice === "paper" && computerChoice === "scissors") {
-        console.log("You lose! Scissors beats Paper");
-        computerScore += 1;
-
-    } else if (humanChoice === "paper" && computerChoice === "rock") {
-        console.log("You win! Paper beats Rock");
-        humanScore += 1;
-
-    } else if (humanChoice === "scissors" && computerChoice === "paper") {
-        console.log("You win! Scissors beats Paper");
-        humanScore += 1;
-
-    } else if (humanChoice === "scissors" && computerChoice === "rock") {
-        console.log("You lose! Rock beats Scissors");
-        computerScore += 1;
-    } 
     console.log(`Human Score: ${humanScore}, Computer Score: ${computerScore}`);
 }
 
 function playGame() {
 
-    while(humanScore !== 5 && computerScore !== 5) {
+    while(humanScore < 5 && computerScore < 5) {
         const humanSelection = getHumanChoice();
         const computerSelection = getComputerChoice();
     
@@ -73,10 +60,13 @@ function playGame() {
     }
 
     if (humanScore === 5) {
-         console.log("You Win!");
-    } else if (computerScore == 5) {
-         console.log("Computer Win!");
+         console.log("CONGRATULATIONS! You Win!");
+    } else if (computerScore === 5) {
+         console.log("GAME OVER! Computer Wins!");
 }
 }
 
-playGame();
+const button = document.getElementById("button");
+button.addEventListener("click", function() {
+    playGame()
+});
