@@ -1,0 +1,81 @@
+FUNCTION getComputerChoice
+    SET value TO RANDOM number between 0 and 2
+    IF value IS 0
+        RETURN "rock"
+    ELSE IF value IS 1
+        RETURN "paper"
+    ELSE
+        RETURN "scissors"
+END FUNCTION
+
+FUNCTION getHumanChoice
+    WHILE TRUE
+        PROMPT userInput WITH "Choose: Rock, Paper, Scissors?"
+        IF userInput IS EMPTY
+            DISPLAY "Input cannot be empty"
+            CONTINUE
+        END IF
+
+        CONVERT userInput TO LOWERCASE
+        IF userInput IS "rock" OR "paper" OR "scissors"
+            RETURN userInput
+        ELSE
+            DISPLAY "Invalid choice! Please choose Rock, Paper, or Scissors."
+        END IF
+    END WHILE
+END FUNCTION
+
+SET humanScore TO 0
+SET computerScore TO 0
+
+FUNCTION playRound(humanChoice, computerChoice)
+    IF humanChoice IS computerChoice
+        DISPLAY "Scoreless!!!!"
+
+    ELSE IF humanChoice IS "rock" AND computerChoice IS "paper"
+        DISPLAY "You lose! Paper beats Rock"
+        INCREMENT computerScore BY 1
+
+    ELSE IF humanChoice IS "rock" AND computerChoice IS "scissors"
+        DISPLAY "You win! Rock beats Scissors"
+        INCREMENT humanScore BY 1
+
+    ELSE IF humanChoice IS "paper" AND computerChoice IS "scissors"
+        DISPLAY "You lose! Scissors beats Paper"
+        INCREMENT computerScore BY 1
+
+    ELSE IF humanChoice IS "paper" AND computerChoice IS "rock"
+        DISPLAY "You win! Paper beats Rock"
+        INCREMENT humanScore BY 1
+
+    ELSE IF humanChoice IS "scissors" AND computerChoice IS "paper"
+        DISPLAY "You win! Scissors beats Paper"
+        INCREMENT humanScore BY 1
+
+    ELSE IF humanChoice IS "scissors" AND computerChoice IS "rock"
+        DISPLAY "You lose! Rock beats Scissors"
+        INCREMENT computerScore BY 1
+    END IF
+
+    DISPLAY "Human Score: " + humanScore + ", Computer Score: " + computerScore
+END FUNCTION
+
+FUNCTION playGame
+    DISPLAY "Welcome to Rock, Paper, Scissors!"
+    DISPLAY "First to score 5 points wins the game."
+
+    WHILE humanScore IS NOT 5 AND computerScore IS NOT 5
+        SET humanSelection TO CALL getHumanChoice
+        SET computerSelection TO CALL getComputerChoice
+
+        CALL playRound WITH humanSelection AND computerSelection
+    END WHILE
+
+    IF humanScore IS 5
+        DISPLAY "You Win!"
+    ELSE IF computerScore IS 5
+        DISPLAY "Computer Win!"
+    END IF
+END FUNCTION
+
+CALL playGame
