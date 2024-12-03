@@ -1,0 +1,46 @@
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #FFDA77;
+    color: #1c1b1c;
+}
+.game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-top: 40px;
+
+}
+
+.block {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.text {
+    text-align: center;
+}
+
+.computer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+img {
+    display: flex;
+    flex-direction: column;
+    width: 55px;
+    height: auto;
+}
+
+#bg {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 400px;
+    height: auto;
+}
