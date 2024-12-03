@@ -43,7 +43,7 @@ let computerScore = 0;
 
 function playRound(humanChoice, computerChoice) {
   if (humanChoice === computerChoice) {
-    computerChoiceImg.src = `/img/${computerChoice}.png`;
+    computerChoiceImg.src = `img/${computerChoice}.png`;
     computerChoiceImg.alt = `${computerChoice}`;
     computerChoiceText.textContent = `Computer chooses: ${computerChoice
       .charAt(0)
@@ -59,7 +59,7 @@ function playRound(humanChoice, computerChoice) {
     (humanChoice === "paper" && computerChoice === "rock") ||
     (humanChoice === "scissors" && computerChoice === "paper")
   ) {
-    computerChoiceImg.src = `/img/${computerChoice}.png`;
+    computerChoiceImg.src = `img/${computerChoice}.png`;
     computerChoiceImg.alt = `${computerChoice}`;
     computerChoiceText.textContent = `Computer chooses: ${computerChoice
       .charAt(0)
@@ -70,7 +70,7 @@ function playRound(humanChoice, computerChoice) {
     computer.appendChild(gameScore);
     humanScore++;
   } else {
-    computerChoiceImg.src = `/img/${computerChoice}.png`;
+    computerChoiceImg.src = `img/${computerChoice}.png`;
     computerChoiceImg.alt = `${computerChoice}`;
     computerChoiceText.textContent = `Computer chooses: ${computerChoice
       .charAt(0)
